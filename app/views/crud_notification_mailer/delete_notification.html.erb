@@ -1,0 +1,10 @@
+<h2>hello</h2>
+
+<p>
+a <%=@object.class.to_s %> has been DELETED. below details
+</p>
+<% @object.attributes.each do |attr_key, attr_value| %>
+  <p> <%=attr_key%> : <%=attr_value%> </p>
+<%end%>
+
+<h3> total <%@object.class.to_s %> <%=@object_count-1%>

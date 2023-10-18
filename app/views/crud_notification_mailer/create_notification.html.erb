@@ -1,0 +1,14 @@
+<h1>hello,</h1>
+
+<p>
+  a new <%=@object.class.to_s %> has been created. below details
+</p>
+<% @object.attributes.each do |attr_key, attr_value| %>
+  <p> <%=attr_key%> : <%=attr_value%> </p>
+<%end%>
+
+
+<%= image_tag attachments['images.jpeg'].url %>
+
+
+<h3> total <%@object.class.to_s %> <%=@object_count%>

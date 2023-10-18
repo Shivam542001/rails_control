@@ -3,7 +3,9 @@ class UsersController < ApplicationController
   http_basic_authenticate_with name: "aa", password: "aa"
 
   def index
+    # render file: "#{Rails.root}/public/500.html", layout: false
     @users = User.all
+    # render layout: "special"
   end
   
   def show
@@ -24,6 +26,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
       if @user.save
+        # CrudNotificationMailer.create_notification(@user).deliver_now
+        # SendEmailsJob.perform_now(@user)
+        # SendEmailsJob.set(wait_until: Time.now+10).perform_later(@user)
         redirect_to @user
       else
         render :new, status: :unprocessable_entity
@@ -32,15 +37,15 @@ class UsersController < ApplicationController
 
   def update
       if @user.update(user_params)
+        CrudNotificationMailer.update_notification(@user).deliver_now
         redirect_to @user
-
       else
         render :edit, status: :unprocessable_entity
-       
       end
   end
 
   def destroy
+    CrudNotificationMailer.delete_notification(@user).deliver_now
     @user.destroy
     redirect_to root_url
   end
