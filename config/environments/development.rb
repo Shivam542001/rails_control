@@ -10,7 +10,7 @@ Rails.application.configure do
   # port:            587,
   # domain:          'gmail.com',
   # user_name:       'st74482611@gmail.com',
-  # password:        'nbdsxrtsajhblacf',
+  # password:        '<password>',
   # authentication:  'plain',
   # enable_starttls: true,
   # open_timeout:    5,
